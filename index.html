@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1C1B1A">
+  <meta name="description" content="АО «Разрез Новосергеевский» — добыча и экспорт высококачественного угля Кузбасса. Поставки ПУТ и энергетического угля в Индию, Южную Корею и Китай.">
+  <title>Разрез Новосергеевский — уголь Кузбасса</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%231C1B1A%22%2F%3E%3Cpath%20d%3D%22M8%207.2h16l-2.4%205.2H10.4L8%207.2z%22%20fill%3D%22none%22%20stroke%3D%22%23A97B50%22%20stroke-width%3D%221.4%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M6.5%2014.2h19l-2.7%205.6H9.2L6.5%2014.2z%22%20fill%3D%22none%22%20stroke%3D%22%23A97B50%22%20stroke-width%3D%221.4%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M5%2021.6h22l-2.8%205.2H7.8L5%2021.6z%22%20fill%3D%22none%22%20stroke%3D%22%23A97B50%22%20stroke-width%3D%221.4%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --coal: #1C1B1A;
+      --graphite: #2B2A28;
+      --stone: #3E3B37;
+      --ash: #5C5852;
+      --warm-grey: #8A857E;
+      --mist: #C9C3BA;
+      --ivory: #EEEAE4;
+      --paper: #F6F3EE;
+      --bronze: #A97B50;
+      --bronze-light: #C49A70;
+      --bronze-dim: #8C6642;
+      --line: rgba(169, 123, 80, 0.28);
+      --line-dark: rgba(238, 234, 228, 0.12);
+      --text: #2B2A28;
+      --muted: #5C5852;
+      --on-dark: #EEEAE4;
+      --dim-dark: #C9C3BA;
+      --header-h: 76px;
+      --wrap: 1160px;
+      --wrap-wide: 1280px;
+      --side: clamp(20px, 5vw, 56px);
+      --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-display: "Unbounded", "Manrope", sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --radius: 2px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-padding-top: var(--header-h); }
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+    html, body { margin: 0; }
+    body {
+      font-family: var(--font-sans);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+    p { margin: 0 0 1.1em; }
+    p:last-child { margin-bottom: 0; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; margin: 0; letter-spacing: -0.03em; }
+    ul { margin: 0; padding: 0; list-style: none; }
+
+    :focus-visible { outline: 2px solid var(--bronze); outline-offset: 3px; }
+    ::selection { background: var(--bronze); color: var(--coal); }
+
+    .skip {
+      position: absolute;
+      left: 16px; top: 10px;
+      z-index: 400;
+      background: var(--bronze);
+      color: var(--coal);
+      padding: 8px 14px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transform: translateY(-160%);
+    }
+    .skip:focus { transform: none; }
+
+    .wrap { width: min(100% - 2 * var(--side), var(--wrap)); margin-inline: auto; }
+    .wrap-wide { width: min(100% - 2 * var(--side), var(--wrap-wide)); margin-inline: auto; }
+
+    /* Header */
+    .header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 300;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      color: var(--on-dark);
+      transition: background 0.35s var(--ease), border-color 0.35s var(--ease), backdrop-filter 0.35s var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+    .header.is-scrolled,
+    .header.is-open {
+      background: rgba(28, 27, 26, 0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom-color: var(--line);
+    }
+    .header-inner {
+      width: min(100% - 2 * var(--side), var(--wrap-wide));
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      min-width: 0;
+      height: var(--header-h);
+    }
+    .logo-text {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .nav {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav a {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 8px 10px;
+      color: var(--mist);
+      transition: color 0.2s;
+    }
+    .nav a:hover { color: var(--on-dark); }
+
+    .lang {
+      display: flex;
+      align-items: center;
+      margin-left: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px;
+      flex-shrink: 0;
+    }
+    .lang button {
+      min-width: 40px;
+      height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--mist);
+    }
+    .lang button[aria-pressed="true"] {
+      background: var(--bronze);
+      color: var(--coal);
+    }
+
+    .burger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      margin-left: auto;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .burger span,
+    .burger span::before,
+    .burger span::after {
+      position: absolute;
+      left: 12px;
+      width: 20px;
+      height: 1.5px;
+      background: var(--ivory);
+      transition: transform 0.3s var(--ease), opacity 0.3s;
+    }
+    .burger span { top: 50%; }
+    .burger span::before, .burger span::after { content: ""; left: 0; }
+    .burger span::before { top: -6px; }
+    .burger span::after { top: 6px; }
+    .header.is-open .burger span { background: transparent; }
+    .header.is-open .burger span::before { top: 0; transform: rotate(45deg); }
+    .header.is-open .burger span::after { top: 0; transform: rotate(-45deg); }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      color: var(--on-dark);
+      background: var(--coal);
+      isolation: isolate;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 62% 58%;
+    }
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(105deg, rgba(28, 27, 26, 0.88) 0%, rgba(28, 27, 26, 0.76) 24%, rgba(28, 27, 26, 0.48) 44%, rgba(28, 27, 26, 0.18) 64%, rgba(28, 27, 26, 0.06) 100%),
+        linear-gradient(to top, rgba(28, 27, 26, 0.55) 0%, rgba(28, 27, 26, 0.16) 30%, rgba(28, 27, 26, 0) 52%);
+    }
+    .hero-inner {
+      width: min(100% - 2 * var(--side), var(--wrap-wide));
+      margin: 0 auto;
+      padding: calc(var(--header-h) + 48px) 0 88px;
+    }
+    .hero h1 {
+      font-size: clamp(1.85rem, 5.6vw, 4.75rem);
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      gap: 0.02em;
+      max-width: 100%;
+      text-shadow: 0 2px 28px rgba(0, 0, 0, 0.45);
+    }
+    .hero h1 span { display: block; }
+    .hero-sub {
+      margin: 28px 0 0;
+      max-width: 22em;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-weight: 500;
+      line-height: 1.45;
+      color: var(--ivory);
+      text-shadow: 0 2px 22px rgba(0, 0, 0, 0.45);
+    }
+    .hero-rule {
+      width: 72px;
+      height: 2px;
+      background: var(--bronze);
+      margin: 28px 0 0;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .btn-primary {
+      background: var(--bronze);
+      color: var(--coal);
+    }
+    .btn-primary:hover { background: var(--bronze-light); }
+    .btn-ghost {
+      border: 1px solid var(--line);
+      color: var(--ivory);
+    }
+    .btn-ghost:hover { border-color: var(--bronze-light); color: #fff; }
+
+    /* Stats */
+    .stats {
+      background: var(--graphite);
+      color: var(--on-dark);
+      padding: 56px 0;
+      border-top: 1px solid var(--line);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .stat-value {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(1.7rem, 3.4vw, 2.55rem);
+      letter-spacing: -0.03em;
+      color: var(--ivory);
+      line-height: 1.15;
+    }
+    .stat-label {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bronze-light);
+    }
+    .stat-markets {
+      font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+      line-height: 1.3;
+      letter-spacing: -0.025em;
+    }
+
+    /* Sections common */
+    .section { padding: 104px 0; }
+    .section-dark { background: var(--coal); color: var(--on-dark); }
+    .section-light { background: var(--paper); color: var(--text); }
+    .section-warm { background: var(--ivory); color: var(--text); }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bronze);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--bronze);
+      flex-shrink: 0;
+    }
+    .section h2 {
+      font-size: clamp(1.85rem, 4vw, 3.15rem);
+      margin-bottom: 28px;
+      max-width: 16ch;
+    }
+    .lead, .prose { max-width: 40em; }
+    .lead { font-size: 1.125rem; }
+    .muted { color: var(--muted); }
+    .section-dark .muted, .section-dark .prose { color: var(--dim-dark); }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    /* Principles */
+    .principles {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 56px;
+    }
+    .principle {
+      padding: 28px 26px 30px;
+      border: 1px solid rgba(43, 42, 40, 0.1);
+      background: #fff;
+    }
+    .principle svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--bronze);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      margin-bottom: 18px;
+    }
+    .principle h3 {
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .principle p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
+
+    /* Quality cards */
+    .products {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 40px;
+      align-items: stretch;
+    }
+    .product {
+      padding: 32px 28px 34px;
+      background: #fff;
+      border: 1px solid rgba(43, 42, 40, 0.1);
+      height: 100%;
+    }
+    .product svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--bronze);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      margin-bottom: 18px;
+    }
+    .product h3 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+    .product p { color: var(--muted); }
+
+    .coal-band {
+      position: relative;
+      isolation: isolate;
+      padding: 112px 0;
+      color: var(--on-dark);
+      overflow: hidden;
+    }
+    .coal-band-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+    .coal-band-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .coal-band-shade {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(28, 27, 26, 0.72) 0%, rgba(28, 27, 26, 0.5) 48%, rgba(28, 27, 26, 0.34) 100%);
+    }
+    .coal-band p {
+      max-width: 38em;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      line-height: 1.6;
+      font-weight: 500;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
+    }
+
+    /* Logistics */
+    .logistics-photos {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 48px 0 64px;
+    }
+    .logistics-photos figure { margin: 0; }
+    .logistics-photos img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      background: var(--graphite);
+    }
+    .img-rail { object-position: center 40%; }
+    .img-port { object-position: 62% 40%; }
+    .img-office { object-position: 38% 42%; }
+    .caption {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--warm-grey);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      position: relative;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 16px;
+      position: relative;
+      padding-bottom: 28px;
+    }
+    .step:last-child { padding-bottom: 0; }
+    .step-index {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--bronze);
+      color: var(--bronze);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      background: var(--paper);
+      position: relative;
+      z-index: 1;
+    }
+    .step:not(:last-child) .step-index::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 28px;
+      width: 1px;
+      height: calc(100% + 28px);
+      background: var(--line);
+      transform: translateX(-50%);
+    }
+    .step h3 {
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .step p { font-size: 0.875rem; color: var(--muted); }
+
+    /* Team */
+    .team-hero {
+      position: relative;
+      min-height: min(62vh, 620px);
+      display: flex;
+      align-items: flex-end;
+      color: var(--on-dark);
+      isolation: isolate;
+      background: var(--coal);
+    }
+    .team-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 96% 40%;
+      z-index: -2;
+    }
+    .team-hero-shade {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(28, 27, 26, 0.9) 0%, rgba(28, 27, 26, 0.62) 38%, rgba(28, 27, 26, 0.18) 68%, rgba(28, 27, 26, 0.08) 100%);
+    }
+    .team-hero .wrap { padding: 96px 0 72px; }
+    .team-hero h2 { max-width: 10ch; }
+    .team-hero .lead { max-width: 34em; color: var(--ivory); }
+    .team-lower { padding: 88px 0; background: var(--ivory); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .team-grid img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      object-position: 38% 42%;
+      background: var(--graphite);
+    }
+
+    /* Sustainability */
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 48px;
+    }
+    .pillar {
+      padding: 32px 28px 36px;
+      background: #fff;
+      border-top: 2px solid var(--bronze);
+      height: 100%;
+    }
+    .pillar svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--bronze);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      margin-bottom: 20px;
+    }
+    .pillar h3 { font-size: 1.15rem; margin-bottom: 12px; }
+    .pillar p { color: var(--muted); }
+
+    /* Contacts */
+    .contacts {
+      padding: 120px 0;
+      background: var(--graphite);
+      color: var(--on-dark);
+    }
+    .contacts h2 { margin-bottom: 40px; }
+    .contact-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+    }
+    .contact-city {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 22px;
+      font-size: 1.125rem;
+      color: var(--mist);
+    }
+    .contact-city svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--bronze);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--coal);
+      color: var(--mist);
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      font-size: 0.8125rem;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px 24px;
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* Responsive */
+    @media (min-width: 720px) {
+      body { font-size: 1.125rem; }
+      .stats { padding: 68px 0; }
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+      }
+      .stat { padding: 0 36px; }
+      .stat:first-child { padding-left: 0; }
+      .stat:last-child { padding-right: 0; }
+      .stat + .stat { border-left: 1px solid var(--line); }
+      .principles { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .products { grid-template-columns: 1fr 1fr; gap: 20px; grid-auto-rows: 1fr; }
+      .logistics-photos { grid-template-columns: 1fr 1fr; }
+      .logistics-photos img { height: 340px; }
+      .pillars { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .team-grid { grid-template-columns: 1.1fr 0.9fr; gap: 56px; }
+      .team-grid img { height: 380px; }
+    }
+
+    @media (min-width: 1024px) {
+      .nav { display: flex; }
+      .nav .lang { display: none; }
+      .split { grid-template-columns: 0.9fr 1.1fr; gap: 72px; align-items: start; }
+      .split-reverse { grid-template-columns: 1.05fr 0.95fr; }
+      .about-intro { position: sticky; top: calc(var(--header-h) + 32px); }
+      .steps {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0;
+      }
+      .step {
+        display: block;
+        padding: 0 20px;
+        text-align: left;
+      }
+      .step:first-child { padding-left: 0; }
+      .step:last-child { padding-right: 0; }
+      .step-index { margin-bottom: 16px; }
+      .step:not(:last-child) .step-index::after {
+        left: 28px;
+        top: 13px;
+        width: calc(100% + 20px);
+        height: 1px;
+        transform: none;
+      }
+      .logistics-photos img { height: 400px; }
+      .hero-inner { padding-bottom: 112px; }
+    }
+
+    @media (max-width: 1023px) {
+      .header.is-open {
+        height: 100dvh;
+        height: 100vh;
+        align-items: flex-start;
+        overflow: auto;
+        background: rgba(28, 27, 26, 0.98);
+      }
+      .header.is-open .header-inner {
+        flex-wrap: wrap;
+        align-content: flex-start;
+        min-height: var(--header-h);
+      }
+      .header.is-open .logo { order: 1; }
+      .header.is-open .burger { order: 2; margin-left: auto; }
+      .header.is-open .nav { order: 3; }
+      .nav {
+        display: none;
+        position: static;
+        width: 100%;
+        flex-basis: 100%;
+        margin: 0;
+        background: transparent;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 12px 0 40px;
+        gap: 4px;
+      }
+      .header.is-open .nav { display: flex; }
+      .nav a {
+        font-size: 1.25rem;
+        letter-spacing: 0.06em;
+        padding: 14px 0;
+        color: var(--ivory);
+        width: 100%;
+        border-bottom: 1px solid var(--line-dark);
+      }
+      .header-lang { display: none; }
+      .nav .lang {
+        display: flex;
+        margin: 28px 0 0;
+      }
+      .burger { display: block; }
+      body.menu-open { overflow: hidden; }
+    }
+
+    @media (max-width: 719px) {
+      .section { padding: 80px 0; }
+      .logo-text { max-width: 62vw; }
+      .hero-inner { padding-bottom: 72px; }
+      .coal-band { padding: 80px 0; }
+      .contacts { padding: 88px 0; }
+      .hero-shade {
+        background:
+          linear-gradient(to top, rgba(28, 27, 26, 0.88) 0%, rgba(28, 27, 26, 0.70) 30%, rgba(28, 27, 26, 0.28) 55%, rgba(28, 27, 26, 0.22) 100%);
+      }
+      .team-hero {
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+      }
+      .team-hero img {
+        position: relative;
+        inset: auto;
+        z-index: 0;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        object-position: 90% 40%;
+      }
+      .team-hero-shade { display: none; }
+      .team-hero .wrap { padding: 36px 0 48px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">К содержанию</a>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a class="logo" href="#top" aria-label="Разрез Новосергеевский" data-i18n-aria="brand.full">
+        <span class="logo-text" data-i18n="brand">Новосергеевский</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Навигация" data-i18n-aria="aria.nav">
+        <a href="#about" data-i18n="nav.about">О компании</a>
+        <a href="#quality" data-i18n="nav.quality">Качество</a>
+        <a href="#logistics" data-i18n="nav.logistics">Логистика</a>
+        <a href="#team" data-i18n="nav.team">Команда</a>
+        <a href="#sustainability" data-i18n="nav.sustainability">Устойчивость</a>
+        <a href="#contacts" data-i18n="nav.contacts">Контакты</a>
+        <div class="lang" role="group" aria-label="Язык" data-i18n-aria="aria.lang">
+          <button type="button" data-set-lang="ru" aria-pressed="true">RU</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </nav>
+
+      <div class="lang header-lang" role="group" aria-label="Язык" data-i18n-aria="aria.lang">
+        <button type="button" data-set-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav" data-i18n-aria="aria.menu" aria-label="Меню">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-bg">
+        <img src="images/hero-truck.jpg" alt="Карьерный самосвал на разрезе Новосергеевский" data-i18n-alt="alt.hero" width="1514" height="1039" fetchpriority="high">
+      </div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <h1>
+          <span data-i18n="hero.line1">Разрез</span>
+          <span data-i18n="hero.line2">Новосергеевский</span>
+        </h1>
+        <p class="hero-sub" data-i18n="hero.subtitle">Уголь Кузбасса — качество и надежность</p>
+        <div class="hero-rule" aria-hidden="true"></div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#about" data-i18n="cta.about">О компании</a>
+          <a class="btn btn-ghost" href="#contacts" data-i18n="cta.contact">Связаться</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Ключевые показатели" data-i18n-aria="aria.stats">
+      <div class="wrap stats-grid">
+        <div class="stat reveal">
+          <div class="stat-value" data-i18n="stats.prod.value">15–20 млн&nbsp;т</div>
+          <div class="stat-label" data-i18n="stats.prod.label">Добыча в&nbsp;год</div>
+        </div>
+        <div class="stat reveal reveal-d1">
+          <div class="stat-value" data-i18n="stats.exp.value">~15 млн&nbsp;т</div>
+          <div class="stat-label" data-i18n="stats.exp.label">Экспорт в&nbsp;год</div>
+        </div>
+        <div class="stat reveal reveal-d2">
+          <div class="stat-value stat-markets" data-i18n="stats.mkt.value">Индия<br>Южная Корея<br>Китай</div>
+          <div class="stat-label" data-i18n="stats.mkt.label">Ключевые рынки</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="about">
+      <div class="wrap split">
+        <div class="about-intro reveal">
+          <p class="eyebrow" data-i18n="about.eyebrow">Компания</p>
+          <h2 data-i18n="about.title">О компании</h2>
+        </div>
+        <div class="prose reveal reveal-d1">
+          <p class="lead" data-i18n="about.p1">АО «Разрез Новосергеевский» осуществляет добычу высококачественного угля в&nbsp;Кузбассе.</p>
+          <p class="muted" data-i18n="about.p2">Кузнецкий угольный бассейн обладает уникальной сырьевой базой. Уголь Кузбасса отличается высокими качественными характеристиками, особым химическим составом и&nbsp;востребованностью на&nbsp;мировых рынках.</p>
+          <p class="muted" data-i18n="about.p3">Развитие производственных мощностей разреза направлено на&nbsp;обеспечение стабильных поставок угля на&nbsp;ключевые экспортные рынки и&nbsp;укрепление позиций Кузбасса как надежного поставщика высококачественных энергетических ресурсов в&nbsp;Азиатско-Тихоокеанском регионе.</p>
+          <p class="muted" data-i18n="about.p4">Деятельность компании включает разработку месторождения, обогащение и&nbsp;поставку пылеугольного топлива (ПУТ) и&nbsp;энергетического угля потребителям Индии, Южной Кореи и&nbsp;Китая.</p>
+          <p class="muted" data-i18n="about.p5">Целевые показатели: добыча до&nbsp;15–20 млн тонн угля в&nbsp;год; поставки на&nbsp;экспорт около 15&nbsp;млн тонн в&nbsp;год.</p>
+          <p class="muted" data-i18n="about.p6">Основа работы компании — устойчивое развитие угольного разреза Новосергеевский, внедрение современных технологий добычи и&nbsp;переработки, обеспечение надежности поставок и&nbsp;долгосрочное сотрудничество с&nbsp;клиентами и&nbsp;регионами присутствия.</p>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <p class="eyebrow reveal" style="margin-top:72px" data-i18n="about.principles">Принципы компании</p>
+        <div class="principles">
+          <article class="principle reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.2c0 4.3 2.9 7.4 7 8.8 4.1-1.4 7-4.5 7-8.8V6.5L12 3.5Z"/><path d="m8.5 12 2.3 2.3 4.7-5"/></svg>
+            <h3 data-i18n="about.pr1.title">Надежность поставок</h3>
+            <p data-i18n="about.pr1.text">Надежность поставок и&nbsp;исполнение обязательств.</p>
+          </article>
+          <article class="principle reveal reveal-d1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16"/><path d="M6 19V13h4v6"/><path d="M11 19V8h4v11"/><path d="M16 19V4h4v15"/></svg>
+            <h3 data-i18n="about.pr2.title">Производственные мощности</h3>
+            <p data-i18n="about.pr2.text">Развитие производственных мощностей и&nbsp;инфраструктуры.</p>
+          </article>
+          <article class="principle reveal reveal-d2">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M6.1 6.1l1.6 1.6M16.3 16.3l1.6 1.6M17.9 6.1l-1.6 1.6M7.7 16.3l-1.6 1.6"/></svg>
+            <h3 data-i18n="about.pr3.title">Современные технологии</h3>
+            <p data-i18n="about.pr3.text">Применение современных технологий добычи и&nbsp;обогащения.</p>
+          </article>
+          <article class="principle reveal reveal-d3">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7-4.1-7-9.3A3.7 3.7 0 0 1 12 8.4 3.7 3.7 0 0 1 19 11.2c0 5.2-7 9.3-7 9.3Z"/><path d="M12 8.4V4.5M10 5.5h4"/></svg>
+            <h3 data-i18n="about.pr4.title">Экология и охрана труда</h3>
+            <p data-i18n="about.pr4.text">Ответственное отношение к&nbsp;экологии и&nbsp;охране труда.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-warm" id="quality">
+      <div class="wrap">
+        <p class="eyebrow reveal" data-i18n="quality.eyebrow">Продукция</p>
+        <h2 class="reveal" data-i18n="quality.title">Качество угля</h2>
+        <p class="lead reveal" data-i18n="quality.lead">Разрез «Новосергеевский» добывает премиальный уголь Кузбасского угольного бассейна.</p>
+        <p class="muted reveal" style="margin-top:12px" data-i18n="quality.supply">Компания поставляет:</p>
+        <div class="products">
+          <article class="product reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5h16"/><path d="M7 19.5V11l5-6.5 5 6.5v8.5"/><path d="M10 19.5v-4h4v4"/></svg>
+            <h3 data-i18n="quality.pci.title">Уголь ПУТ (T-PCI, LV-PCI)</h3>
+            <p data-i18n="quality.pci.text">Для металлургической промышленности, с&nbsp;низким содержанием летучих веществ и&nbsp;стабильными характеристиками, соответствующими требованиям современных доменных производств.</p>
+          </article>
+          <article class="product reveal reveal-d1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c2.2 3.2 6.5 6.6 6.5 10.4A6.5 6.5 0 0 1 5.5 13.9C5.5 10.1 9.8 6.7 12 3.5Z"/><path d="M9 17.5c.6 1.4 1.7 2 3 2s2.4-.6 3-2"/></svg>
+            <h3 data-i18n="quality.thermal.title">Энергетический уголь</h3>
+            <p data-i18n="quality.thermal.text">Для тепловой генерации, с&nbsp;высокой калорийностью и&nbsp;низким содержанием примесей.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="coal-band">
+      <div class="coal-band-bg">
+        <img src="images/coal.jpg" alt="Крупный план высококачественного угля Кузбасса" data-i18n-alt="alt.coal" width="1400" height="933" loading="lazy">
+      </div>
+      <div class="coal-band-shade" aria-hidden="true"></div>
+      <div class="wrap reveal">
+        <p data-i18n="quality.assurance">Качество продукции обеспечивается передовыми технологиями открытых горных работ, обогащения и&nbsp;многоступенчатым контролем на&nbsp;всех этапах — от&nbsp;угольного разреза до&nbsp;порта отгрузки, гарантируя соответствие угля международным стандартам и&nbsp;требованиям клиентов.</p>
+      </div>
+    </div>
+
+    <section class="section section-light" id="logistics">
+      <div class="wrap">
+        <p class="eyebrow reveal" data-i18n="logistics.eyebrow">Цепочка поставок</p>
+        <h2 class="reveal" data-i18n="logistics.title">Логистика</h2>
+        <div class="prose reveal">
+          <p class="lead" data-i18n="logistics.p1">Компания «Разрез Новосергеевский» выстраивает надежную логистическую цепочку для бесперебойных поставок угля на&nbsp;экспорт.</p>
+          <p class="muted" data-i18n="logistics.p2">Сотрудничество с&nbsp;крупными железнодорожными операторами полувагонов обеспечивает ритмичность отгрузок и&nbsp;оперативную подачу подвижного состава. Работа с&nbsp;крупнейшими угольными терминалами на&nbsp;Дальнем Востоке, Северо-Западе и&nbsp;Юге России гарантирует накопление судовых партий, своевременную отправку и&nbsp;контроль качества на&nbsp;всех этапах логистики.</p>
+        </div>
+
+        <div class="logistics-photos">
+          <figure class="reveal">
+            <img src="images/rail.jpg" alt="Угольные полувагоны, вид сверху" data-i18n-alt="alt.rail" width="1400" height="933" loading="lazy" class="img-rail">
+            <figcaption class="caption" data-i18n="logistics.cap.rail">Железнодорожная отгрузка</figcaption>
+          </figure>
+          <figure class="reveal reveal-d1">
+            <img src="images/port.jpg" alt="Погрузка угля в трюм судна" data-i18n-alt="alt.port" width="1400" height="942" loading="lazy" class="img-port">
+            <figcaption class="caption" data-i18n="logistics.cap.port">Портовые терминалы</figcaption>
+          </figure>
+        </div>
+
+        <div class="steps" aria-label="Маршрут поставок" data-i18n-aria="logistics.route">
+          <div class="step reveal">
+            <div class="step-index">01</div>
+            <div>
+              <h3 data-i18n="logistics.s1">Разрез</h3>
+              <p data-i18n="logistics.s1.sub">Кузбасс</p>
+            </div>
+          </div>
+          <div class="step reveal reveal-d1">
+            <div class="step-index">02</div>
+            <div>
+              <h3 data-i18n="logistics.s2">Железная дорога</h3>
+              <p data-i18n="logistics.s2.sub">Полувагоны</p>
+            </div>
+          </div>
+          <div class="step reveal reveal-d2">
+            <div class="step-index">03</div>
+            <div>
+              <h3 data-i18n="logistics.s3">Терминалы</h3>
+              <p data-i18n="logistics.s3.sub">Дальний Восток<br>Северо-Запад · Юг</p>
+            </div>
+          </div>
+          <div class="step reveal reveal-d3">
+            <div class="step-index">04</div>
+            <div>
+              <h3 data-i18n="logistics.s4">Морские суда</h3>
+              <p data-i18n="logistics.s4.sub">Судовые партии</p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="step-index">05</div>
+            <div>
+              <h3 data-i18n="logistics.s5">Азиатско-Тихоокеанский регион</h3>
+              <p data-i18n="logistics.s5.sub">Индия · Южная Корея · Китай</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="team-hero">
+        <img src="images/engineers.jpg" alt="Специалисты на фоне угольного разреза" data-i18n-alt="alt.engineers" width="2000" height="667" loading="lazy" class="img-engineers">
+        <div class="team-hero-shade" aria-hidden="true"></div>
+        <div class="wrap">
+          <p class="eyebrow reveal" data-i18n="team.eyebrow">Люди</p>
+          <h2 class="reveal" data-i18n="team.title">Команда</h2>
+          <p class="lead reveal" data-i18n="team.p1">В&nbsp;команду «Разреза Новосергеевский» входят специалисты с&nbsp;опытом работы в&nbsp;российской угольной отрасли: горные инженеры, технологи, логисты и&nbsp;специалисты по&nbsp;качеству. Профессиональный коллектив обеспечивает эффективную работу разреза, внедрение современных технологий и&nbsp;надежность поставок.</p>
+        </div>
+      </div>
+      <div class="team-lower">
+        <div class="wrap team-grid">
+          <img class="reveal img-office" src="images/office.jpg" alt="Работа команды логистики и поставок" data-i18n-alt="alt.office" width="1400" height="788" loading="lazy">
+          <div class="prose reveal reveal-d1">
+            <p data-i18n="team.p2">Приоритеты кадровой политики компании — развитие персонала, обеспечение безопасности труда, охраны здоровья и&nbsp;создание условий для профессионального роста сотрудников.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="sustainability">
+      <div class="wrap">
+        <p class="eyebrow reveal" data-i18n="sustain.eyebrow">Ответственность</p>
+        <h2 class="reveal" data-i18n="sustain.title">Устойчивое развитие</h2>
+        <p class="lead reveal" data-i18n="sustain.lead">Компания «Разрез Новосергеевский» осуществляет деятельность с&nbsp;учетом экологических и&nbsp;социальных аспектов:</p>
+        <div class="pillars">
+          <article class="pillar reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5h16"/><path d="M6 19.5s.5-7 6-9.5c0 0 1.8 5.5-1.2 9.5"/><path d="M12 8C14.5 5 19 5.5 19.5 9.5 16 10 13.5 12 12 15"/></svg>
+            <h3 data-i18n="sustain.env.title">Экология</h3>
+            <p data-i18n="sustain.env.text">Внедрение технологий снижения воздействия на&nbsp;окружающую среду, контроль выбросов и&nbsp;рекультивация земель.</p>
+          </article>
+          <article class="pillar reveal reveal-d1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10.5h8v8.5a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-8.5Z"/><path d="M9 10.5V8a3 3 0 0 1 6 0v2.5"/><path d="M12 14v3"/></svg>
+            <h3 data-i18n="sustain.ohs.title">Охрана труда</h3>
+            <p data-i18n="sustain.ohs.text">Обеспечение безопасных условий работы, обучение персонала и&nbsp;соблюдение стандартов промышленной безопасности.</p>
+          </article>
+          <article class="pillar reveal reveal-d2">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="2.2"/><circle cx="16" cy="9" r="1.8"/><path d="M4.5 18.5c.4-3 2.5-4.5 4.5-4.5s4.1 1.5 4.5 4.5"/><path d="M13.2 14.4c.9-.6 2-1 3-1 1.8 0 3.4 1.1 3.8 3.6"/></svg>
+            <h3 data-i18n="sustain.soc.title">Социальная ответственность</h3>
+            <p data-i18n="sustain.soc.text">Поддержка регионов присутствия, создание рабочих мест, развитие персонала и&nbsp;прозрачные принципы ведения бизнеса.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacts" id="contacts">
+      <div class="wrap">
+        <p class="eyebrow reveal" data-i18n="contacts.eyebrow">Связь</p>
+        <h2 class="reveal" data-i18n="contacts.title">Контакты</h2>
+        <p class="contact-name reveal" data-i18n="contacts.company">АО «Разрез Новосергеевский»</p>
+        <p class="contact-city reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6.5-5.2 6.5-10.2A6.5 6.5 0 0 0 5.5 10.8C5.5 15.8 12 21 12 21Z"/><circle cx="12" cy="10.8" r="2.2"/></svg>
+          <span data-i18n="contacts.city">Новокузнецк, Россия</span>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <p id="footer-copy">© 2026 АО «Разрез Новосергеевский»</p>
+      <p data-i18n="contacts.city">Новокузнецк, Россия</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const I18N = {
+        ru: {
+          "doc.title": "Разрез Новосергеевский — уголь Кузбасса",
+          "doc.desc": "АО «Разрез Новосергеевский» — добыча и экспорт высококачественного угля Кузбасса. Поставки ПУТ и энергетического угля в Индию, Южную Корею и Китай.",
+          "skip": "К содержанию",
+          "brand": "Новосергеевский",
+          "brand.full": "Разрез Новосергеевский",
+          "aria.nav": "Навигация",
+          "aria.lang": "Язык",
+          "aria.menu": "Меню",
+          "aria.close": "Закрыть меню",
+          "aria.stats": "Ключевые показатели",
+          "nav.about": "О компании",
+          "nav.quality": "Качество",
+          "nav.logistics": "Логистика",
+          "nav.team": "Команда",
+          "nav.sustainability": "Устойчивость",
+          "nav.contacts": "Контакты",
+          "cta.about": "О компании",
+          "cta.contact": "Связаться",
+          "hero.line1": "Разрез",
+          "hero.line2": "Новосергеевский",
+          "hero.subtitle": "Уголь Кузбасса — качество и надежность",
+          "stats.prod.value": "15–20 млн\u00a0т",
+          "stats.prod.label": "Добыча в\u00a0год",
+          "stats.exp.value": "~15 млн\u00a0т",
+          "stats.exp.label": "Экспорт в\u00a0год",
+          "stats.mkt.value": "Индия<br>Южная Корея<br>Китай",
+          "stats.mkt.label": "Ключевые рынки",
+          "about.eyebrow": "Компания",
+          "about.title": "О компании",
+          "about.p1": "АО «Разрез Новосергеевский» осуществляет добычу высококачественного угля в\u00a0Кузбассе.",
+          "about.p2": "Кузнецкий угольный бассейн обладает уникальной сырьевой базой. Уголь Кузбасса отличается высокими качественными характеристиками, особым химическим составом и\u00a0востребованностью на\u00a0мировых рынках.",
+          "about.p3": "Развитие производственных мощностей разреза направлено на\u00a0обеспечение стабильных поставок угля на\u00a0ключевые экспортные рынки и\u00a0укрепление позиций Кузбасса как надежного поставщика высококачественных энергетических ресурсов в\u00a0Азиатско-Тихоокеанском регионе.",
+          "about.p4": "Деятельность компании включает разработку месторождения, обогащение и\u00a0поставку пылеугольного топлива (ПУТ) и\u00a0энергетического угля потребителям Индии, Южной Кореи и\u00a0Китая.",
+          "about.p5": "Целевые показатели: добыча до\u00a015–20 млн тонн угля в\u00a0год; поставки на\u00a0экспорт около 15\u00a0млн тонн в\u00a0год.",
+          "about.p6": "Основа работы компании — устойчивое развитие угольного разреза Новосергеевский, внедрение современных технологий добычи и\u00a0переработки, обеспечение надежности поставок и\u00a0долгосрочное сотрудничество с\u00a0клиентами и\u00a0регионами присутствия.",
+          "about.principles": "Принципы компании",
+          "about.pr1.title": "Надежность поставок",
+          "about.pr1.text": "Надежность поставок и\u00a0исполнение обязательств.",
+          "about.pr2.title": "Производственные мощности",
+          "about.pr2.text": "Развитие производственных мощностей и\u00a0инфраструктуры.",
+          "about.pr3.title": "Современные технологии",
+          "about.pr3.text": "Применение современных технологий добычи и\u00a0обогащения.",
+          "about.pr4.title": "Экология и охрана труда",
+          "about.pr4.text": "Ответственное отношение к\u00a0экологии и\u00a0охране труда.",
+          "quality.eyebrow": "Продукция",
+          "quality.title": "Качество угля",
+          "quality.lead": "Разрез «Новосергеевский» добывает премиальный уголь Кузбасского угольного бассейна.",
+          "quality.supply": "Компания поставляет:",
+          "quality.pci.title": "Уголь ПУТ (T-PCI, LV-PCI)",
+          "quality.pci.text": "Для металлургической промышленности, с\u00a0низким содержанием летучих веществ и\u00a0стабильными характеристиками, соответствующими требованиям современных доменных производств.",
+          "quality.thermal.title": "Энергетический уголь",
+          "quality.thermal.text": "Для тепловой генерации, с\u00a0высокой калорийностью и\u00a0низким содержанием примесей.",
+          "quality.assurance": "Качество продукции обеспечивается передовыми технологиями открытых горных работ, обогащения и\u00a0многоступенчатым контролем на\u00a0всех этапах — от\u00a0угольного разреза до\u00a0порта отгрузки, гарантируя соответствие угля международным стандартам и\u00a0требованиям клиентов.",
+          "logistics.eyebrow": "Цепочка поставок",
+          "logistics.title": "Логистика",
+          "logistics.p1": "Компания «Разрез Новосергеевский» выстраивает надежную логистическую цепочку для бесперебойных поставок угля на\u00a0экспорт.",
+          "logistics.p2": "Сотрудничество с\u00a0крупными железнодорожными операторами полувагонов обеспечивает ритмичность отгрузок и\u00a0оперативную подачу подвижного состава. Работа с\u00a0крупнейшими угольными терминалами на\u00a0Дальнем Востоке, Северо-Западе и\u00a0Юге России гарантирует накопление судовых партий, своевременную отправку и\u00a0контроль качества на\u00a0всех этапах логистики.",
+          "logistics.cap.rail": "Железнодорожная отгрузка",
+          "logistics.cap.port": "Портовые терминалы",
+          "logistics.route": "Маршрут поставок",
+          "logistics.s1": "Разрез",
+          "logistics.s1.sub": "Кузбасс",
+          "logistics.s2": "Железная дорога",
+          "logistics.s2.sub": "Полувагоны",
+          "logistics.s3": "Терминалы",
+          "logistics.s3.sub": "Дальний Восток<br>Северо-Запад · Юг",
+          "logistics.s4": "Морские суда",
+          "logistics.s4.sub": "Судовые партии",
+          "logistics.s5": "Азиатско-Тихоокеанский регион",
+          "logistics.s5.sub": "Индия · Южная Корея · Китай",
+          "team.eyebrow": "Люди",
+          "team.title": "Команда",
+          "team.p1": "В\u00a0команду «Разреза Новосергеевский» входят специалисты с\u00a0опытом работы в\u00a0российской угольной отрасли: горные инженеры, технологи, логисты и\u00a0специалисты по\u00a0качеству. Профессиональный коллектив обеспечивает эффективную работу разреза, внедрение современных технологий и\u00a0надежность поставок.",
+          "team.p2": "Приоритеты кадровой политики компании — развитие персонала, обеспечение безопасности труда, охраны здоровья и\u00a0создание условий для профессионального роста сотрудников.",
+          "sustain.eyebrow": "Ответственность",
+          "sustain.title": "Устойчивое развитие",
+          "sustain.lead": "Компания «Разрез Новосергеевский» осуществляет деятельность с\u00a0учетом экологических и\u00a0социальных аспектов:",
+          "sustain.env.title": "Экология",
+          "sustain.env.text": "Внедрение технологий снижения воздействия на\u00a0окружающую среду, контроль выбросов и\u00a0рекультивация земель.",
+          "sustain.ohs.title": "Охрана труда",
+          "sustain.ohs.text": "Обеспечение безопасных условий работы, обучение персонала и\u00a0соблюдение стандартов промышленной безопасности.",
+          "sustain.soc.title": "Социальная ответственность",
+          "sustain.soc.text": "Поддержка регионов присутствия, создание рабочих мест, развитие персонала и\u00a0прозрачные принципы ведения бизнеса.",
+          "contacts.eyebrow": "Связь",
+          "contacts.title": "Контакты",
+          "contacts.company": "АО «Разрез Новосергеевский»",
+          "contacts.city": "Новокузнецк, Россия",
+          "footer.copy": "© {year} АО «Разрез Новосергеевский»",
+          "alt.hero": "Карьерный самосвал на разрезе Новосергеевский",
+          "alt.coal": "Крупный план высококачественного угля Кузбасса",
+          "alt.rail": "Угольные полувагоны, вид сверху",
+          "alt.port": "Погрузка угля в трюм судна",
+          "alt.engineers": "Специалисты на фоне угольного разреза",
+          "alt.office": "Работа команды логистики и поставок"
+        },
+        en: {
+          "doc.title": "Razrez Novosergeevsky — Kuzbass Coal",
+          "doc.desc": "JSC Razrez Novosergeevsky is a Kuzbass coal mining and export company, supplying PCI and thermal coal to India, South Korea and China.",
+          "skip": "Skip to content",
+          "brand": "Novosergeevsky",
+          "brand.full": "Razrez Novosergeevsky",
+          "aria.nav": "Navigation",
+          "aria.lang": "Language",
+          "aria.menu": "Menu",
+          "aria.close": "Close menu",
+          "aria.stats": "Key figures",
+          "nav.about": "About",
+          "nav.quality": "Quality",
+          "nav.logistics": "Logistics",
+          "nav.team": "Team",
+          "nav.sustainability": "Sustainability",
+          "nav.contacts": "Contacts",
+          "cta.about": "About us",
+          "cta.contact": "Contact",
+          "hero.line1": "Razrez",
+          "hero.line2": "Novosergeevsky",
+          "hero.subtitle": "Kuzbass Coal — Quality and Reliability",
+          "stats.prod.value": "15–20\u00a0Mt",
+          "stats.prod.label": "Annual production",
+          "stats.exp.value": "~15\u00a0Mt",
+          "stats.exp.label": "Annual exports",
+          "stats.mkt.value": "India<br>South Korea<br>China",
+          "stats.mkt.label": "Key markets",
+          "about.eyebrow": "Company",
+          "about.title": "About Us",
+          "about.p1": "JSC Razrez Novosergeevsky is a Kuzbass-based coal mining company, producing high-quality coal.",
+          "about.p2": "The Kuznetsk Coal Basin (Kuzbass) offers a unique resource base. Kuzbass coal stands out for its high quality, distinctive chemical composition and strong demand on global markets.",
+          "about.p3": "We are expanding the mine's production capacity to ensure stable coal supplies to key export markets and to strengthen Kuzbass's position as a reliable supplier of high-quality energy resources in the Asia-Pacific.",
+          "about.p4": "Our operations span field development, beneficiation and supply of pulverized coal injection (PCI) coal and thermal coal to customers in India, South Korea and China.",
+          "about.p5": "Our targets: production of up to 15–20 million tonnes of coal per year and exports of around 15 million tonnes per year.",
+          "about.p6": "Our foundation is the sustainable development of the Novosergeevsky open-pit mine, the adoption of modern mining and processing technologies, supply reliability and long-term cooperation with customers and regions of presence.",
+          "about.principles": "Our Principles",
+          "about.pr1.title": "Reliable supplies",
+          "about.pr1.text": "Reliable supplies and fulfillment of commitments.",
+          "about.pr2.title": "Production capacity",
+          "about.pr2.text": "Development of production capacity and infrastructure.",
+          "about.pr3.title": "Modern technologies",
+          "about.pr3.text": "Application of modern mining and beneficiation technologies.",
+          "about.pr4.title": "Environment and safety",
+          "about.pr4.text": "Responsible approach to the environment and occupational health and safety.",
+          "quality.eyebrow": "Products",
+          "quality.title": "Coal Quality",
+          "quality.lead": "Razrez Novosergeevsky produces premium coal from the Kuznetsk Coal Basin.",
+          "quality.supply": "We supply:",
+          "quality.pci.title": "PCI coal (T-PCI, LV-PCI)",
+          "quality.pci.text": "For the steel industry, with low volatile matter content and stable characteristics that meet the requirements of modern blast furnace production.",
+          "quality.thermal.title": "Thermal coal",
+          "quality.thermal.text": "For thermal power generation, with high calorific value and low impurity content.",
+          "quality.assurance": "We ensure product quality through advanced open-pit mining and beneficiation technologies and multi-stage control at every stage — from the mine to the port of shipment — guaranteeing compliance with international standards and customer requirements.",
+          "logistics.eyebrow": "Supply chain",
+          "logistics.title": "Logistics",
+          "logistics.p1": "We build a reliable logistics chain for uninterrupted coal exports.",
+          "logistics.p2": "Cooperation with major open-top railcar operators ensures consistent shipments and prompt rolling stock supply. Work with the largest coal terminals in the Far East, North-West and South of Russia guarantees vessel lot accumulation, timely dispatch and quality control at every stage of logistics.",
+          "logistics.cap.rail": "Rail shipments",
+          "logistics.cap.port": "Port terminals",
+          "logistics.route": "Supply route",
+          "logistics.s1": "Mine",
+          "logistics.s1.sub": "Kuzbass",
+          "logistics.s2": "Rail",
+          "logistics.s2.sub": "Open-top wagons",
+          "logistics.s3": "Terminals",
+          "logistics.s3.sub": "Far East<br>North-West · South",
+          "logistics.s4": "Vessels",
+          "logistics.s4.sub": "Vessel lots",
+          "logistics.s5": "Asia-Pacific",
+          "logistics.s5.sub": "India · South Korea · China",
+          "team.eyebrow": "People",
+          "team.title": "Team",
+          "team.p1": "The Razrez Novosergeevsky team brings together specialists with experience in the Russian coal industry: mining engineers, process engineers, logistics and quality specialists. Our team ensures efficient mine operation, the adoption of modern technologies and supply reliability.",
+          "team.p2": "Our HR priorities are staff development, occupational safety and health, and creating conditions for employees' professional growth.",
+          "sustain.eyebrow": "Responsibility",
+          "sustain.title": "Sustainability",
+          "sustain.lead": "We do business with due regard for environmental and social aspects:",
+          "sustain.env.title": "Environment",
+          "sustain.env.text": "Adoption of technologies that reduce environmental impact, emissions control and land reclamation.",
+          "sustain.ohs.title": "Occupational Health and Safety",
+          "sustain.ohs.text": "Safe working conditions, staff training and compliance with industrial safety standards.",
+          "sustain.soc.title": "Social Responsibility",
+          "sustain.soc.text": "Support for regions of presence, job creation, staff development and transparent business principles.",
+          "contacts.eyebrow": "Get in touch",
+          "contacts.title": "Contacts",
+          "contacts.company": "JSC Razrez Novosergeevsky",
+          "contacts.city": "Novokuznetsk, Russia",
+          "footer.copy": "© {year} JSC Razrez Novosergeevsky",
+          "alt.hero": "A mining dump truck at the Novosergeevsky open-pit mine",
+          "alt.coal": "Close-up of high-quality Kuzbass coal",
+          "alt.rail": "Aerial view of coal gondola wagons",
+          "alt.port": "Coal being loaded into a bulk carrier hold",
+          "alt.engineers": "Specialists overlooking the open-pit mine",
+          "alt.office": "Logistics and sales team at work"
+        }
+      };
+
+      const header = document.getElementById("header");
+      const nav = document.getElementById("nav");
+      const burger = document.querySelector(".burger");
+      const desc = document.querySelector('meta[name="description"]');
+      const year = String(new Date().getFullYear());
+
+      const apply = (lang) => {
+        const dict = I18N[lang] || I18N.ru;
+        document.documentElement.lang = lang;
+        document.title = dict["doc.title"];
+        if (desc) desc.setAttribute("content", dict["doc.desc"]);
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (dict[key] != null) el.innerHTML = dict[key];
+        });
+        document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-alt");
+          if (dict[key] != null) el.setAttribute("alt", dict[key]);
+        });
+        document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-aria");
+          if (dict[key] != null) el.setAttribute("aria-label", dict[key]);
+        });
+        const copy = document.getElementById("footer-copy");
+        if (copy) copy.textContent = dict["footer.copy"].replace("{year}", year);
+        document.querySelectorAll("[data-set-lang]").forEach((btn) => {
+          btn.setAttribute("aria-pressed", String(btn.getAttribute("data-set-lang") === lang));
+        });
+        if (burger) {
+          const open = header.classList.contains("is-open");
+          burger.setAttribute("aria-label", open ? dict["aria.close"] : dict["aria.menu"]);
+        }
+        try { localStorage.setItem("lang", lang); } catch (e) {}
+      };
+
+      const closeMenu = () => {
+        header.classList.remove("is-open");
+        document.body.classList.remove("menu-open");
+        if (burger) {
+          burger.setAttribute("aria-expanded", "false");
+          const lang = document.documentElement.lang || "ru";
+          burger.setAttribute("aria-label", (I18N[lang] || I18N.ru)["aria.menu"]);
+        }
+      };
+
+      const openMenu = () => {
+        header.classList.add("is-open");
+        document.body.classList.add("menu-open");
+        if (burger) {
+          burger.setAttribute("aria-expanded", "true");
+          const lang = document.documentElement.lang || "ru";
+          burger.setAttribute("aria-label", (I18N[lang] || I18N.ru)["aria.close"]);
+        }
+      };
+
+      document.querySelectorAll("[data-set-lang]").forEach((btn) => {
+        btn.addEventListener("click", () => apply(btn.getAttribute("data-set-lang")));
+      });
+
+      if (burger) {
+        burger.addEventListener("click", () => {
+          if (header.classList.contains("is-open")) closeMenu();
+          else openMenu();
+        });
+      }
+
+      nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+
+      const onScroll = () => {
+        header.classList.toggle("is-scrolled", window.scrollY > 24);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) {
+        document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+      } else if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+        document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+      } else {
+        document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+      }
+
+      let start = "ru";
+      try {
+        const saved = localStorage.getItem("lang");
+        if (saved === "en" || saved === "ru") start = saved;
+      } catch (e) {}
+      apply(start);
+    })();
+  </script>
+</body>
+</html>
