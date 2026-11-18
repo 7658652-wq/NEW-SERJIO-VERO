@@ -138,6 +138,7 @@
       text-transform: uppercase;
       padding: 8px 10px;
       color: var(--mist);
+      white-space: nowrap;
       transition: color 0.2s;
     }
     .nav a:hover { color: var(--on-dark); }
@@ -462,7 +463,7 @@
     }
     .img-rail { object-position: center 40%; }
     .img-port { object-position: 62% 40%; }
-    .img-office { object-position: 38% 42%; }
+    .img-office { object-position: 72% 30%; }
     .caption {
       margin-top: 10px;
       font-size: 0.75rem;
@@ -558,7 +559,7 @@
       width: 100%;
       height: 280px;
       object-fit: cover;
-      object-position: 38% 42%;
+      object-position: 72% 30%;
       background: var(--graphite);
     }
 
@@ -673,8 +674,6 @@
     }
 
     @media (min-width: 1024px) {
-      .nav { display: flex; }
-      .nav .lang { display: none; }
       .split { grid-template-columns: 0.9fr 1.1fr; gap: 72px; align-items: start; }
       .split-reverse { grid-template-columns: 1.05fr 0.95fr; }
       .about-intro { position: sticky; top: calc(var(--header-h) + 32px); }
@@ -701,7 +700,12 @@
       .hero-inner { padding-bottom: 112px; }
     }
 
-    @media (max-width: 1023px) {
+    @media (min-width: 1200px) {
+      .nav { display: flex; }
+      .nav .lang { display: none; }
+    }
+
+    @media (max-width: 1199px) {
       .header.is-open {
         height: 100dvh;
         height: 100vh;
@@ -794,7 +798,7 @@
         <a href="#quality" data-i18n="nav.quality">Качество</a>
         <a href="#logistics" data-i18n="nav.logistics">Логистика</a>
         <a href="#team" data-i18n="nav.team">Команда</a>
-        <a href="#sustainability" data-i18n="nav.sustainability">Устойчивость</a>
+        <a href="#sustainability" data-i18n="nav.sustainability">Устойчивое развитие</a>
         <a href="#contacts" data-i18n="nav.contacts">Контакты</a>
         <div class="lang" role="group" aria-label="Язык" data-i18n-aria="aria.lang">
           <button type="button" data-set-lang="ru" aria-pressed="true">RU</button>
@@ -1067,7 +1071,7 @@
           "nav.quality": "Качество",
           "nav.logistics": "Логистика",
           "nav.team": "Команда",
-          "nav.sustainability": "Устойчивость",
+          "nav.sustainability": "Устойчивое развитие",
           "nav.contacts": "Контакты",
           "cta.about": "О компании",
           "cta.contact": "Связаться",
