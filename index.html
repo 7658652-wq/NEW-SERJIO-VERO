@@ -364,6 +364,9 @@
       display: block;
       background: var(--graphite);
     }
+    /* Stacked About: keep the 28px heading→photo gap (h2 margin), 40px photo→text */
+    #about .split { row-gap: 0; }
+    #about .about-photo { margin-bottom: 40px; }
 
     /* Principles */
     .principles {
@@ -685,19 +688,29 @@
     @media (min-width: 1024px) {
       .split { grid-template-columns: 0.9fr 1.1fr; gap: 72px; align-items: start; }
       .split-reverse { grid-template-columns: 1.05fr 0.95fr; }
-      #about .split { align-items: stretch; }
-      .about-intro {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
+      #about .split {
+        grid-template-columns: 0.9fr 1.1fr;
+        grid-template-rows: auto 1fr;
+        column-gap: 72px;
+        row-gap: 0;
+        align-items: start;
       }
-      .about-photo {
-        flex: 1 1 auto;
-        display: grid;
-        grid-template-rows: 1fr auto;
+      #about .about-intro {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      #about .about-photo {
+        grid-column: 1;
+        grid-row: 2;
+        align-self: stretch;
         min-height: 0;
+        margin-bottom: 0;
       }
-      .about-photo img {
+      #about .prose {
+        grid-column: 2;
+        grid-row: 2;
+      }
+      #about .about-photo img {
         width: 100%;
         height: 100%;
         min-height: 0;
@@ -887,11 +900,10 @@
         <div class="about-intro reveal">
           <p class="eyebrow" data-i18n="about.eyebrow">Компания</p>
           <h2 data-i18n="about.title">О компании</h2>
-          <figure class="about-photo">
-            <img src="images/pit.jpg" alt="Открытый угольный разрез Новосергеевский, Кузбасс" data-i18n-alt="alt.pit" width="1000" height="1500" loading="lazy" class="img-pit">
-            <figcaption class="caption" data-i18n="about.cap.pit">Разрез Новосергеевский, Кузбасс</figcaption>
-          </figure>
         </div>
+        <figure class="about-photo reveal">
+          <img src="images/pit.jpg" alt="Открытый угольный разрез Новосергеевский, Кузбасс" data-i18n-alt="alt.pit" width="1000" height="1500" loading="lazy" class="img-pit">
+        </figure>
         <div class="prose reveal reveal-d1">
           <p class="lead" data-i18n="about.p1">АО «Разрез Новосергеевский» осуществляет добычу высококачественного угля в&nbsp;Кузбассе.</p>
           <p class="muted" data-i18n="about.p2">Кузнецкий угольный бассейн обладает уникальной сырьевой базой. Уголь Кузбасса отличается высокими качественными характеристиками, особым химическим составом и&nbsp;востребованностью на&nbsp;мировых рынках.</p>
@@ -1118,7 +1130,6 @@
           "stats.mkt.label": "Ключевые рынки",
           "about.eyebrow": "Компания",
           "about.title": "О компании",
-          "about.cap.pit": "Разрез Новосергеевский, Кузбасс",
           "about.p1": "АО «Разрез Новосергеевский» осуществляет добычу высококачественного угля в\u00a0Кузбассе.",
           "about.p2": "Кузнецкий угольный бассейн обладает уникальной сырьевой базой. Уголь Кузбасса отличается высокими качественными характеристиками, особым химическим составом и\u00a0востребованностью на\u00a0мировых рынках.",
           "about.p3": "Развитие производственных мощностей разреза направлено на\u00a0обеспечение стабильных поставок угля на\u00a0ключевые экспортные рынки и\u00a0укрепление позиций Кузбасса как надежного поставщика высококачественных энергетических ресурсов в\u00a0Азиатско-Тихоокеанском регионе.",
@@ -1216,7 +1227,6 @@
           "stats.mkt.label": "Key markets",
           "about.eyebrow": "Company",
           "about.title": "About Us",
-          "about.cap.pit": "Novosergeevsky open-pit mine, Kuzbass",
           "about.p1": "JSC Razrez Novosergeevsky is a Kuzbass-based coal mining company, producing high-quality coal.",
           "about.p2": "The Kuznetsk Coal Basin (Kuzbass) offers a unique resource base. Kuzbass coal stands out for its high quality, distinctive chemical composition and strong demand on global markets.",
           "about.p3": "We are expanding the mine's production capacity to ensure stable coal supplies to key export markets and to strengthen Kuzbass's position as a reliable supplier of high-quality energy resources in the Asia-Pacific.",
